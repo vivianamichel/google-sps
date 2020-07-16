@@ -13,13 +13,18 @@
 // limitations under the License.
 
 /** Fetches tasks from the server and adds them to the DOM. */
-function loadTasks() {
+function loadTasks(place) {
   fetch('/list-tasks').then(response => response.json()).then((tasks) => {
-    const taskListElement = document.getElementById('task-list');
+  const taskListElement = document.getElementById('task-list');
     tasks.forEach((task) => {
-      taskListElement.appendChild(createTaskElement(task));
-    })
-  });
+        if (place == location){
+            taskListElement.appendChild(createTaskElement(task));
+            }
+        else{taskListElement.nextElementSibling;
+            }
+        });
+
+    });
 }
 
 /** Creates an element that represents a task, including its delete button. */
@@ -50,3 +55,5 @@ function deleteTask(task) {
   params.append('id', task.id);
   fetch('/delete-task', {method: 'POST', body: params});
 }
+
+
