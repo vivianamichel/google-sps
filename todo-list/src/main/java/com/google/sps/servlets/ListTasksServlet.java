@@ -44,10 +44,12 @@ public class ListTasksServlet extends HttpServlet {
     List<Task> tasks = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
+      String name = (String) entity.getProperty("name");
+      String location = (String) entity.getProperty("location");
       String title = (String) entity.getProperty("title");
       long timestamp = (long) entity.getProperty("timestamp");
 
-      Task task = new Task(id, title, timestamp);
+      Task task = new Task(id, name, title, location, timestamp);
       tasks.add(task);
     }
 
