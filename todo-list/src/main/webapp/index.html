@@ -2,22 +2,28 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Todo List</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body onload="loadTasks()">
-    <h1>Todo List</h1>
-
-    <form method="POST" action="/new-task">
-      <input type="text" name="title" />
-      <br/>
-      <button>Submit</button>
-    </form>
-
-    <hr/>
-
-    <ul id="task-list"></ul>
-
+  <body>
+    <div class="background">
+        <div class="topnav">      
+        <a class="active" href="#home">Login</a>
+        <a href="#news">About</a>
+        </div>
+        <div class="text">
+            Add info about app here.
+        </div>
+        <div class="card" >
+            <h1> Login </h1>
+            <input type="text" placeholder="Name" name="name-choice">
+            <input type="text" placeholder="Password" name="comment-choice">
+            <br>
+            <a href="/feed.html"> <button>Submit</button></a>
+            <button>Create Account</button> <br>
+        </div>
+        <h1>TESTING</h1>
+    </div>
   </body>
 </html>
