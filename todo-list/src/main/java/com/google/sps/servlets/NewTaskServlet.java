@@ -33,7 +33,9 @@ public class NewTaskServlet extends HttpServlet {
     long timestamp = System.currentTimeMillis();
 
     Entity taskEntity = new Entity("Task");
+    taskEntity.setProperty("name", name);
     taskEntity.setProperty("title", title);
+    taskEntity.setProperty("location", location);
     taskEntity.setProperty("timestamp", timestamp);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
