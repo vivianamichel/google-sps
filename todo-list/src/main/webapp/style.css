@@ -45,8 +45,16 @@
   margin-top: 90px;
   color: white;
   margin-left: 40%;
-
 }
+
+select{
+    width: 80%;
+    font-family: "Gill Sans", sans-serif;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
 button {
   background-color: white; 
   color: black;
