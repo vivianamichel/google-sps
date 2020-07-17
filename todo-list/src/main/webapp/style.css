@@ -98,3 +98,7 @@ input[type=text] {
   padding-bottom: 400px;
   margin-left: 250px;
 }
+
+#task-list {
+  list-style-type: none;
+}
