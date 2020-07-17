@@ -25,7 +25,7 @@ public final class Task {
 
   public Task(long id, String name, String title, String location, long timestamp) {
     this.id = id;
-    this.id = name;
+    this.name = name;
     this.title = title;
     this.location = location;
     this.timestamp = timestamp;
