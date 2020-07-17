@@ -30,6 +30,8 @@ public class NewTaskServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String title = request.getParameter("title");
+    String name = request.getParameter("name");
+    String location = request.getParameter("location");
     long timestamp = System.currentTimeMillis();
 
     Entity taskEntity = new Entity("Task");
