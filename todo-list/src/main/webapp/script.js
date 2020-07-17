@@ -13,7 +13,8 @@
 // limitations under the License.
 
 /** Fetches tasks from the server and adds them to the DOM. */
-function loadTasks(place) {
+function loadLocationTasks() {
+  var place = document.getElementsByName('location-choice').value;
   fetch('/list-tasks').then(response => response.json()).then((tasks) => {
   const taskListElement = document.getElementById('task-list');
     tasks.forEach((task) => {
@@ -24,6 +25,15 @@ function loadTasks(place) {
             }
         });
 
+    });
+}
+
+function loadTasks(){
+    fetch('/list-tasks').then(response => response.json()).then((tasks) =>{
+        const taskListElement = document.getElementById('task-list');
+        tasks.forEach((task) => {
+            taskListElement.appendChild(createTaskElement(task));
+            })
     });
 }
 
