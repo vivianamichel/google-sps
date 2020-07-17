@@ -98,3 +98,16 @@ input[type=text] {
   padding-bottom: 400px;
   margin-left: 250px;
 }
+
+.post {
+  margin-left: 20%;
+  margin-top: 60px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+  padding: 10px;
+  font-family: "Gill Sans", sans-serif;
+  text-align: center;
+  background-color: white;
+  color: black;
+  width: 60%;
+  margin-bottom: 200px;
+}
