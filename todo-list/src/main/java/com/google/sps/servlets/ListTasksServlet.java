@@ -44,15 +44,16 @@ public class ListTasksServlet extends HttpServlet {
     List<Task> tasks = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
-      String name = (String) entity.getProperty("name");
+      String tag = (String) entity.getProperty("tag");
       String location = (String) entity.getProperty("location");
+      String description = (String) entity.getProperty("description");
       String title = (String) entity.getProperty("title");
       long timestamp = (long) entity.getProperty("timestamp");
 
-      Task task = new Task(id, name, title, location, timestamp);
+      Task task = new Task(id, tag, title,  description, location, timestamp);
       tasks.add(task);
     }
-
+    System.out.println(tasks);
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
