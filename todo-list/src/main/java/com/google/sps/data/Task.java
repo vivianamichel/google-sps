@@ -18,15 +18,17 @@ package com.google.sps.data;
 public final class Task {
 
   private final long id;
-  private final String name;
+  private final String tag;
   private final String title;
+  private final String description;
   private final String location;
   private final long timestamp;
 
-  public Task(long id, String name, String title, String location, long timestamp) {
+  public Task(long id, String tag, String title, String description, String location, long timestamp) {
     this.id = id;
-    this.name = name;
+    this.tag = tag;
     this.title = title;
+    this.description = description;
     this.location = location;
     this.timestamp = timestamp;
   }
