@@ -29,20 +29,32 @@ public class NewTaskServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String title = request.getParameter("title");
-    String name = request.getParameter("name");
-    String location = request.getParameter("location");
+    String title = getParameter(request, "title", "");
+    String tag = getParameter(request, "tag", "");
+    String description = getParameter(request, "description", "");
+    String location = getParameter(request, "location", "");
     long timestamp = System.currentTimeMillis();
 
     Entity taskEntity = new Entity("Task");
-    taskEntity.setProperty("name", name);
+    taskEntity.setProperty("tag", tag);
     taskEntity.setProperty("title", title);
     taskEntity.setProperty("location", location);
+    taskEntity.setProperty("description", description);
     taskEntity.setProperty("timestamp", timestamp);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);
 
-    response.sendRedirect("/index.html");
+    response.setContentType("text/html; charset=UTF-8");
+    response.sendRedirect("/feed.html");
+    response.getWriter().println(taskEntity);
+  }
+
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
