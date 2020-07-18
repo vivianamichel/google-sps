@@ -17,23 +17,32 @@ function loadLocationTasks() {
   var place = document.getElementsByName('location-choice').value;
   fetch('/list-tasks').then(response => response.json()).then((tasks) => {
   const taskListElement = document.getElementById('task-list');
+  console.log(taskListElement);
     tasks.forEach((task) => {
         if (place == location){
             taskListElement.appendChild(createTaskElement(task));
-            }
-        else{taskListElement.nextElementSibling;
-            }
-        });
+            console.log(taskListElement);
 
+            }
+            document.getElementById('results').innerText = tasks;
+        });
     });
+
 }
 
+
 function loadTasks(){
-    fetch('/list-tasks').then(response => response.json()).then((tasks) =>{
-        const taskListElement = document.getElementById('task-list');
-        tasks.forEach((task) => {
-            taskListElement.appendChild(createTaskElement(task));
-            })
+    fetch("/list-tasks").then(response => response.json()).then((tasks) => {
+    //console.log(tasks);
+    const createTaskElement = document.getElementById('task-list');
+    //factsListElement.innerHTML = "";
+    tasks.forEach((task) => {createTaskElement.appendChild(createTaskElement(task));
+    console.log(tasks);
+    document.getElementById('results').innerText = tasks;
+    
+
+    });
+
     });
 }
 
@@ -66,4 +75,8 @@ function deleteTask(task) {
   fetch('/delete-task', {method: 'POST', body: params});
 }
 
-
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
