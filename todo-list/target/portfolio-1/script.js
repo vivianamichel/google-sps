@@ -13,13 +13,37 @@
 // limitations under the License.
 
 /** Fetches tasks from the server and adds them to the DOM. */
-function loadTasks() {
+function loadLocationTasks() {
+  var place = document.getElementsByName('location-choice').value;
   fetch('/list-tasks').then(response => response.json()).then((tasks) => {
-    const taskListElement = document.getElementById('task-list');
+  const taskListElement = document.getElementById('task-list');
+  console.log(taskListElement);
     tasks.forEach((task) => {
-      taskListElement.appendChild(createTaskElement(task));
-    })
-  });
+        if (place == location){
+            taskListElement.appendChild(createTaskElement(task));
+            console.log(taskListElement);
+
+            }
+            document.getElementById('results').innerText = tasks;
+        });
+    });
+
+}
+
+
+function loadTasks(){
+    fetch("/list-tasks").then(response => response.json()).then((tasks) => {
+    //console.log(tasks);
+    const createTaskElement = document.getElementById('task-list');
+    //factsListElement.innerHTML = "";
+    tasks.forEach((task) => {createTaskElement.appendChild(createTaskElement(task));
+    console.log(tasks);
+    document.getElementById('results').innerText = tasks;
+    
+
+    });
+
+    });
 }
 
 /** Creates an element that represents a task, including its delete button. */
@@ -49,4 +73,10 @@ function deleteTask(task) {
   const params = new URLSearchParams();
   params.append('id', task.id);
   fetch('/delete-task', {method: 'POST', body: params});
+}
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
