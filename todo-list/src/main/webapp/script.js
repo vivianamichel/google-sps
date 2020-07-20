@@ -14,20 +14,12 @@
 
 /** Fetches tasks from the server and adds them to the DOM. */
 function loadLocationTasks() {
-  var place = document.getElementsByName('location-choice').value;
-  fetch('/list-tasks').then(response => response.json()).then((tasks) => {
-  const taskListElement = document.getElementById('post');
-  locationElement.innerText = task.location;
-  console.log(taskListElement);
-    tasks.forEach((task) => {
-        if (place == locationElement){
-            taskListElement.appendChild(createTaskElement(task));
-            console.log(taskListElement);
-
-            }
-            //document.getElementById('results').innerText = tasks;
-        });
-    });
+  var place = document.getElementsByName('location-choice')
+  var loc = document.getElementById('post');
+  console.log(place);
+  console.log(loc);
+        if (place == loc.location){
+            return loadTasks();};
 
 }
 
