@@ -16,15 +16,16 @@
 function loadLocationTasks() {
   var place = document.getElementsByName('location-choice').value;
   fetch('/list-tasks').then(response => response.json()).then((tasks) => {
-  const taskListElement = document.getElementById('task-list');
+  const taskListElement = document.getElementById('post');
+  locationElement.innerText = task.location;
   console.log(taskListElement);
     tasks.forEach((task) => {
-        if (place == location){
+        if (place == locationElement){
             taskListElement.appendChild(createTaskElement(task));
             console.log(taskListElement);
 
             }
-            document.getElementById('results').innerText = tasks;
+            //document.getElementById('results').innerText = tasks;
         });
     });
 
@@ -33,13 +34,9 @@ function loadLocationTasks() {
 
 function loadTasks(){
     fetch("/list-tasks").then(response => response.json()).then((tasks) => {
-    //console.log(tasks);
-    const createTaskElement = document.getElementById('task-list');
-    //factsListElement.innerHTML = "";
-    tasks.forEach((task) => {createTaskElement.appendChild(createTaskElement(task));
-    console.log(tasks);
-    document.getElementById('results').innerText = tasks;
-    
+    const postTaskElement = document.getElementById('post');
+    tasks.forEach((task) => {postTaskElement.appendChild(createTaskElement(task));
+    console.log(tasks);    
 
     });
 
@@ -54,6 +51,15 @@ function createTaskElement(task) {
   const titleElement = document.createElement('span');
   titleElement.innerText = task.title;
 
+  const tagElement = document.createElement('span');
+  tagElement.innerText = task.tag;
+
+  const locationElement = document.createElement('span');
+  locationElement.innerText = task.location;
+
+  const descriptionElement = document.createElement('span');
+  descriptionElement.innerText = task.description;
+
   const deleteButtonElement = document.createElement('button');
   deleteButtonElement.innerText = 'Delete';
   deleteButtonElement.addEventListener('click', () => {
@@ -64,6 +70,9 @@ function createTaskElement(task) {
   });
 
   taskElement.appendChild(titleElement);
+  taskElement.appendChild(tagElement);
+  taskElement.appendChild(locationElement);
+  taskElement.appendChild(descriptionElement);
   taskElement.appendChild(deleteButtonElement);
   return taskElement;
 }
