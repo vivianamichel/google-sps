@@ -29,6 +29,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.sps.servlets.DeleteTaskServlet;
+import com.google.sps.servlets.NewTaskServlet;
+
 
 /** Servlet responsible for listing tasks. */
 @WebServlet("/list-tasks")
@@ -58,5 +61,14 @@ public class ListTasksServlet extends HttpServlet {
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(tasks));
+    System.out.println(tasks);
+
+  }
+   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
